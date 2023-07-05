@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from .models import User
 
+
 class NormalUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data: dict) -> User:
         return User.objects.create_user(**validated_data)
@@ -18,7 +19,15 @@ class NormalUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "username", "email", "password", "name", "blocked_until", "is_admin"]
+        fields = [
+            "id",
+            "username",
+            "email",
+            "password",
+            "name",
+            "blocked_until",
+            "is_admin",
+        ]
         read_only_fields = ["id", "is_admin", "blocked_until"]
         extra_kwargs = {
             "password": {"write_only": True},
@@ -50,7 +59,15 @@ class AdminManageUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "username", "email", "password", "name", "blocked_until", "is_admin"]
+        fields = [
+            "id",
+            "username",
+            "email",
+            "password",
+            "name",
+            "blocked_until",
+            "is_admin",
+        ]
         read_only_fields = ["id"]
         extra_kwargs = {
             "password": {"write_only": True},
