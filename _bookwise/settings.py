@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 MY_APPS = [
     "users",
+    "follows"
 ]
 
 THIRD_PARTY_APPS = [
