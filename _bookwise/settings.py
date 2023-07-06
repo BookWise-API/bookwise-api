@@ -39,12 +39,13 @@ ALLOWED_HOSTS = []
 
 MY_APPS = [
     "users",
+    "books",
     "follows"
 ]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
-    'drf_spectacular',
+    "drf_spectacular",
 ]
 
 DJANGO_APPS = [
