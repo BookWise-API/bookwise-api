@@ -37,7 +37,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-MY_APPS = ["users", "books"]
+MY_APPS = [
+    "users",
+    "books",
+    "follows"
+]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
