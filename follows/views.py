@@ -3,8 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Follow
 from .serializers import FollowSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.views import Request, Response, status
-from django.shortcuts import get_object_or_404
+from rest_framework.views import Response, status
 from books.models import Book
 
 

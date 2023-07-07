@@ -40,7 +40,9 @@ ALLOWED_HOSTS = []
 MY_APPS = [
     "users",
     "books",
-    "follows"
+    "follows",
+    "loans",
+    "copies"
 ]
 
 THIRD_PARTY_APPS = [
