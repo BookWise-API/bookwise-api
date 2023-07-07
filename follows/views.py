@@ -20,7 +20,7 @@ class FollowView(generics.UpdateAPIView):
 
     def update(self, request, **kwargs):
 
-        book_found = self.get_object()
+        book_found = self.get_object() 
 
         try:
             follow_found = Follow.objects.get(book=book_found, user=request.user)
