@@ -3,7 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Follow
 from .serializers import FollowSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.views import Response, status
+from rest_framework.views import Request, Response, status
+from django.shortcuts import get_object_or_404
 from books.models import Book
 
 
@@ -20,7 +21,7 @@ class FollowView(generics.UpdateAPIView):
 
     def update(self, request, **kwargs):
 
-        book_found = self.get_object() 
+        book_found = self.get_object()
 
         try:
             follow_found = Follow.objects.get(book=book_found, user=request.user)

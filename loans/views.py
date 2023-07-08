@@ -38,7 +38,8 @@ class LoanView(generics.UpdateAPIView):
             """
             Procura emprestimo com mesmo user e copy, em aberto
             """
-            loan_found = Loan.objects.get(copy=copy_found, user=request.user, returned=None)
+            loan_found = Loan.objects.get(
+                copy=copy_found, user=request.user, returned=None)
 
         except Loan.DoesNotExist:
             """
@@ -47,7 +48,8 @@ class LoanView(generics.UpdateAPIView):
             """
             serializer = LoanSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
-            serializer.save(loan_return=devolution_date, copy=copy_found, user=request.user)
+            serializer.save(loan_return=devolution_date,
+                            copy=copy_found, user=request.user)
             return Response(serializer.data, status.HTTP_200_OK)
 
         loan_found.returned = current_date

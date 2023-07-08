@@ -6,4 +6,4 @@ class Follow(models.Model):
     book = models.ForeignKey("books.Book", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f'<Follow_id: {self.pk} | user: {self.user.username} | book: {self.book.title}>'
+        return f'PK: {self.pk} / user: {self.user} / book: {self.book}'
