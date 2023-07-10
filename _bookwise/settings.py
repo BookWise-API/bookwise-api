@@ -40,7 +40,9 @@ ALLOWED_HOSTS = []
 MY_APPS = [
     "users",
     "books",
-    "follows"
+    "follows",
+    "loans",
+    "copies"
 ]
 
 THIRD_PARTY_APPS = [
@@ -109,7 +111,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     },
 }
-
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
