@@ -6,6 +6,7 @@ from .models import Loan
 from .serializers import LoanSerializer
 from copies.models import Copie
 from datetime import datetime, timedelta
+from drf_spectacular.utils import extend_schema
 
 
 class LoanView(generics.UpdateAPIView):
@@ -32,7 +33,8 @@ class LoanView(generics.UpdateAPIView):
             Procura emprestimo com mesmo user e Copie, em aberto
             """
             loan_found = Loan.objects.get(
-                copie=copie_found, user=request.user, returned=None)
+                copie=copie_found, user=request.user, returned=None
+            )
 
         except Loan.DoesNotExist:
             """
@@ -56,8 +58,9 @@ class LoanView(generics.UpdateAPIView):
 
             serializer = LoanSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
-            serializer.save(loan_return=devolution_date,
-                            copie=copie_found, user=request.user)
+            serializer.save(
+                loan_return=devolution_date, copie=copie_found, user=request.user
+            )
             copie_found.is_borrowed = True
             copie_found.save()
             return Response(serializer.data, status.HTTP_200_OK)
@@ -79,3 +82,15 @@ class LoanView(generics.UpdateAPIView):
             user.save()
 
         return Response(serializer.data, status.HTTP_200_OK)
+
+    @extend_schema(
+        operation_id="put_loans",
+        description="Rota para fazer empréstimo de um livro",
+        summary="Alugar um livro",
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @extend_schema(operation_id="patch_loans", exclude=True)
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
