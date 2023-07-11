@@ -1,6 +1,8 @@
 from django.urls import path
-from copies.views import CopieListView
+from . import views
+
 
 urlpatterns = [
-    path("copies/", CopieListView.as_view()),
+    path("copies/register/", views.CopyView.as_view()),  
+    path("copies/", views.CopieListView.as_view()),
 ]
