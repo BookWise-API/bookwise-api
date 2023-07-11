@@ -1,3 +1,5 @@
+<a href="https://insomnia.rest/run/?label=BookWise%20API&uri=https%3A%2F%2Fgithub.com%2FBookWise-API%2Fbookwise-api%2Fblob%2Fmain%2FBookWise_InsomniaProject" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+
 # bookwise-api README Temporário 
 
 Libs instaladas:
