@@ -1,4 +1,8 @@
 from rest_framework import generics
+from copies.models import Copie
+from copies.serializer import CopieSerializer
+
+
 from rest_framework.views import Response, status, Request
 from .serializers import CopySerializer
 from .models import Copy
@@ -8,6 +12,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
+class CopieListView(generics.ListAPIView):
+    queryset = Copie.objects.all()
+    serializer_class = CopieSerializer
+    
 class CopyView(generics.CreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
