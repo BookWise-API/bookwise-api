@@ -25,14 +25,7 @@ class LoanView(generics.UpdateAPIView):
         copie_found = self.get_object()
         user = request.user
 
-        if user.blocked_until is not None:
-            verify_block = current_date - user.blocked_until.date()
-
-            if verify_block.days < 0:
-                """
-                Verifica se o usuário está com empréstimos bloqueados
-                """
-                return Response({"detail": "Blocked user, loan not accepted"})
+        
 
         try:
             """
@@ -46,12 +39,32 @@ class LoanView(generics.UpdateAPIView):
             Primeiro emprestimo com o mesmo user e Copie,
             ou não há este empréstimo em aberto, criando-se um novo.
             """
+            if user.blocked_until is not None:
+                verify_block = current_date - user.blocked_until.date()
+
+                if verify_block.days < 0:
+                    """
+                    Verifica se o usuário está com empréstimos bloqueados
+                    """
+                    return Response({"detail": "Blocked user, loan not accepted"})
+                
+            if copie_found.is_borrowed:
+                """
+                Verifica se a copia está disponível 
+                """
+                return Response({"detail": "Sorry, This copie is already borrowed"})            
+
             serializer = LoanSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save(loan_return=devolution_date,
                             copie=copie_found, user=request.user)
+            copie_found.is_borrowed = True
+            copie_found.save()
             return Response(serializer.data, status.HTTP_200_OK)
-
+        
+        
+        copie_found.is_borrowed = False
+        copie_found.save()
         loan_found.returned = current_date
         loan_found.save()
         serializer = LoanSerializer(instance=loan_found)
