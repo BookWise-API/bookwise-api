@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import Copy
+from .models import Copie
 
 
-class CopySerializer(serializers.ModelSerializer):
+class CopieSerializer(serializers.ModelSerializer):
     book_id = serializers.IntegerField(source="book.pk")
 
     class Meta:
-        model = Copy
+        model = Copie
         fields = [
             "id",
             "book_id",

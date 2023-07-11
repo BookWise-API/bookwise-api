@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import Loan
 from .serializers import LoanSerializer
-from copies.models import Copy
+from copies.models import Copie
 from datetime import datetime, timedelta
 
 
@@ -16,13 +16,13 @@ class LoanView(generics.UpdateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
-    queryset = Copy.objects.all()
+    queryset = Copie.objects.all()
     serializer_class = LoanSerializer
 
     def update(self, request, **kwargs):
         current_date = datetime.now().date()
         devolution_date = current_date + timedelta(days=7)
-        copy_found = self.get_object()
+        copie_found = self.get_object()
         user = request.user
 
         if user.blocked_until is not None:
@@ -36,20 +36,20 @@ class LoanView(generics.UpdateAPIView):
 
         try:
             """
-            Procura emprestimo com mesmo user e copy, em aberto
+            Procura emprestimo com mesmo user e Copie, em aberto
             """
             loan_found = Loan.objects.get(
-                copy=copy_found, user=request.user, returned=None)
+                copie=copie_found, user=request.user, returned=None)
 
         except Loan.DoesNotExist:
             """
-            Primeiro emprestimo com o mesmo user e copy,
+            Primeiro emprestimo com o mesmo user e Copie,
             ou não há este empréstimo em aberto, criando-se um novo.
             """
             serializer = LoanSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save(loan_return=devolution_date,
-                            copy=copy_found, user=request.user)
+                            copie=copie_found, user=request.user)
             return Response(serializer.data, status.HTTP_200_OK)
 
         loan_found.returned = current_date

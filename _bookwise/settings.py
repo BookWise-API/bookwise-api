@@ -157,8 +157,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "BandKamp API",
-    "DESCRIPTION": "API Para listagem de faixas e albums musicais",
+    "TITLE": "BookWise API",
+    "DESCRIPTION": "API Para gerenciamento de Biblioteca, com cadastro e empréstimo de livros",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
