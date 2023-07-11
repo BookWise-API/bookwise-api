@@ -35,13 +35,13 @@ class FollowView(generics.UpdateAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
     @extend_schema(
-        operation_id="update_follows",
+        operation_id="put_follows",
         description="Rota para seguir um livro",
         summary="Seguir um livro",
     )
     def put(self, request, *args, **kwargs):
         return super().put(request, *args, **kwargs)
 
-    @extend_schema(operation_id="put_follows", exclude=True)
+    @extend_schema(operation_id="patch_follows", exclude=True)
     def patch(self, request, *args, **kwargs):
         return super().patch(request, *args, **kwargs)
