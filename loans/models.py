@@ -5,7 +5,7 @@ class Loan(models.Model):
     loan_date = models.DateField(auto_now=True)
     loan_return = models.DateField()
     returned = models.DateField(default=None, null=True)
-    copy = models.ForeignKey('copies.Copie', on_delete=models.CASCADE)
+    copie = models.ForeignKey('copies.Copie', on_delete=models.CASCADE)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
     def __str__(self) -> str:

@@ -22,7 +22,7 @@ class LoanView(generics.UpdateAPIView):
     def update(self, request, **kwargs):
         current_date = datetime.now().date()
         devolution_date = current_date + timedelta(days=7)
-        Copie_found = self.get_object()
+        copie_found = self.get_object()
         user = request.user
 
         if user.blocked_until is not None:
@@ -39,7 +39,7 @@ class LoanView(generics.UpdateAPIView):
             Procura emprestimo com mesmo user e Copie, em aberto
             """
             loan_found = Loan.objects.get(
-                Copie=Copie_found, user=request.user, returned=None)
+                copie=copie_found, user=request.user, returned=None)
 
         except Loan.DoesNotExist:
             """
@@ -49,7 +49,7 @@ class LoanView(generics.UpdateAPIView):
             serializer = LoanSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save(loan_return=devolution_date,
-                            Copie=Copie_found, user=request.user)
+                            copie=copie_found, user=request.user)
             return Response(serializer.data, status.HTTP_200_OK)
 
         loan_found.returned = current_date
