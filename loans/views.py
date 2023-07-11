@@ -85,8 +85,8 @@ class LoanView(generics.UpdateAPIView):
 
     @extend_schema(
         operation_id="put_loans",
-        description="Rota para fazer empréstimo de um livro",
-        summary="Alugar um livro",
+        description="Rota para fazer empréstimo ou devolução de um livro. Usuário precisa estar logado.",
+        summary="Alugar ou devolver um livro",
     )
     def put(self, request, *args, **kwargs):
         return super().put(request, *args, **kwargs)

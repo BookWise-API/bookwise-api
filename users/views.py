@@ -17,7 +17,7 @@ class NormalUserView(generics.CreateAPIView):
 
     @extend_schema(
         operation_id="users_post",
-        description="Rota de criação de usuário",
+        description="Rota de criação de usuário. Não requer autenticação.",
         summary="Criar usuário",
     )
     def post(self, request, *args, **kwargs):
@@ -33,7 +33,7 @@ class AdminUserView(generics.CreateAPIView):
 
     @extend_schema(
         operation_id="users_post_admin",
-        description="Rota de criação de usuário administrador",
+        description="Rota de criação de usuário administrador. Requer autenticação de administrador.",
         summary="Criar usuário administrador",
     )
     def post(self, request, *args, **kwargs):
@@ -49,7 +49,7 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     @extend_schema(
         operation_id="users_get_id",
-        description="Rota de listagem de usuário",
+        description="Rota de listagem de usuário. Requer autenticação do próprio usuário ou um administrador.",
         summary="Listar usuário",
     )
     def get(self, request, *args, **kwargs):
@@ -61,7 +61,7 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     @extend_schema(
         operation_id="users_patch_id",
-        description="Rota de atualização de usuário",
+        description="Rota de atualização de usuário. Requer autenticação do próprio usuário ou um administrador.",
         summary="Atualizar usuário",
     )
     def patch(self, request, *args, **kwargs):
@@ -69,7 +69,7 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     @extend_schema(
         operation_id="users_delete_id",
-        description="Rota de deleção de usuário",
+        description="Rota de deleção de usuário. Requer autenticação do próprio usuário ou um administrador.",
         summary="Deletar usuário",
     )
     def delete(self, request, *args, **kwargs):

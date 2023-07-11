@@ -4,7 +4,6 @@ from .models import Follow
 from .serializers import FollowSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import Request, Response, status
-from django.shortcuts import get_object_or_404
 from books.models import Book
 from drf_spectacular.utils import extend_schema
 
@@ -36,7 +35,7 @@ class FollowView(generics.UpdateAPIView):
 
     @extend_schema(
         operation_id="put_follows",
-        description="Rota para seguir um livro",
+        description="Rota para seguir um livro. Usuário precisa estar logado.",
         summary="Seguir um livro",
     )
     def put(self, request, *args, **kwargs):
