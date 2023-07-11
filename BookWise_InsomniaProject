@@ -1,0 +1,680 @@
+_type: export
+__export_format: 4
+__export_date: 2023-07-11T16:39:30.403Z
+__export_source: insomnia.desktop.app:v2023.4.0
+resources:
+  - _id: req_c78b7d7f68634e22be6a354465c22949
+    parentId: fld_23ab2488b62145df85b0d6201a32ebde
+    modified: 1688526611747
+    created: 1688526229488
+    url: "{{ _.baseURL }}/api/users/login/"
+    name: Admin User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "adm",
+        	"password": "1243"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688526022284
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_23ab2488b62145df85b0d6201a32ebde
+    parentId: fld_2cc32a92fbc0417cb54b13751d0d0caa
+    modified: 1688526197544
+    created: 1688525992987
+    name: Login
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184601.75
+    _type: request_group
+  - _id: fld_2cc32a92fbc0417cb54b13751d0d0caa
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1688526184608
+    created: 1688526184608
+    name: USERS
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184608
+    _type: request_group
+  - _id: wrk_4098a6a5245144c386faef3b758e8f17
+    parentId: null
+    modified: 1688524524228
+    created: 1688524524228
+    name: BookWise API
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_4860ff221b2b4050b0885165ca07b804
+    parentId: fld_23ab2488b62145df85b0d6201a32ebde
+    modified: 1688526864270
+    created: 1688526022309
+    url: "{{ _.baseURL }}/api/users/login/"
+    name: Normal User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "usuario",
+        	"password": "1243"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688526022234
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4871e8e17ce34c749a990e3436ca0e03
+    parentId: fld_4e224a617ba247c686bc58b109e8d651
+    modified: 1688529033913
+    created: 1688526425060
+    url: "{{ _.baseURL }}/api/users/employee/"
+    name: Admin User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Cadastro de Employee2",
+        	"username": "Novo Funcionario2",
+        	"email": "novoFuncionari2o@kenzie.com.br",
+        	"password": "1243",	
+        	"is_admin": true
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1686724755178.2969
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_4e224a617ba247c686bc58b109e8d651
+    parentId: fld_2cc32a92fbc0417cb54b13751d0d0caa
+    modified: 1688526199747
+    created: 1688525930072
+    name: Registro de Usuários
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184551.75
+    _type: request_group
+  - _id: req_c6a3b948c6e245a2b0a8deb13533d0ac
+    parentId: fld_4e224a617ba247c686bc58b109e8d651
+    modified: 1688526813871
+    created: 1688524528530
+    url: "{{ _.baseURL }}/api/users/"
+    name: Normal User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "User Comomun",
+        	"username": "usuario",
+        	"email": "usuario@kenzie.com.br",
+        	"password": "1243"	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1686724755128.2969
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0411b25e8a5c4e47a05fa22aa1075d06
+    parentId: fld_4e224a617ba247c686bc58b109e8d651
+    modified: 1689085604838
+    created: 1689085573423
+    url: "{{ _.baseURL }}/api/users/"
+    name: Normal User to admin in DB
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Adm User",
+        	"username": "adm",
+        	"email": "adm@kenzie.com.br",
+        	"password": "1243"	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1684023255601.8672
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_67d5d25de2a84be08335f8284e96bd4d
+    parentId: fld_45ddded4154c415795ea5b2bab463851
+    modified: 1689088805784
+    created: 1688528868660
+    url: "{{ _.baseURL }}/api/users/1"
+    name: Admin User
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1688527102080
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_45ddded4154c415795ea5b2bab463851
+    parentId: fld_2cc32a92fbc0417cb54b13751d0d0caa
+    modified: 1688527096367
+    created: 1688527086750
+    name: Get
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184501.75
+    _type: request_group
+  - _id: req_41e0c5588d424c7abf681bde51ed017c
+    parentId: fld_45ddded4154c415795ea5b2bab463851
+    modified: 1689088795367
+    created: 1688527102105
+    url: "{{ _.baseURL }}/api/users/1"
+    name: Normal User
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenNotAdmin }}"
+    metaSortKey: -1688527102030
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_99d3c1f0c6d141a587353a9babb2c0ed
+    parentId: fld_29a04b3be97f4112a0ec060e69130003
+    modified: 1689091230343
+    created: 1689091116218
+    url: "{{ _.baseURL }}/api/users/3/"
+    name: Editar User por ID
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "usuario2323",
+        	"email": "usuario2323@kenzie.com.br",
+        	"name": "User Comomun",
+        	"blocked_until": null,
+        	"is_admin": true
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1689089291303.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_29a04b3be97f4112a0ec060e69130003
+    parentId: fld_2cc32a92fbc0417cb54b13751d0d0caa
+    modified: 1689091124697
+    created: 1689091116217
+    name: PATCH User
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184451.75
+    _type: request_group
+  - _id: req_da61cbe0823248acb70ff1ee771d3373
+    parentId: fld_152ee7e60b8f458abe1e1a5b3717621c
+    modified: 1689091309913
+    created: 1689091136369
+    url: "{{ _.baseURL }}/api/users/1"
+    name: Deletar User por ID
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenNotAdmin }}"
+    metaSortKey: -1689089266296.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_152ee7e60b8f458abe1e1a5b3717621c
+    parentId: fld_2cc32a92fbc0417cb54b13751d0d0caa
+    modified: 1689091138684
+    created: 1689091136367
+    name: DELETE user
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184401.75
+    _type: request_group
+  - _id: req_56ea0e995fb546f283ed0fe8718e990c
+    parentId: fld_36cc0490873e4dc7a843aeceeae6b820
+    modified: 1689090201021
+    created: 1689089719868
+    url: "{{ _.baseURL }}/api/books/3/"
+    name: Deletar Livro por ID - Adm
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1689089266296.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_36cc0490873e4dc7a843aeceeae6b820
+    parentId: fld_4787597d0ec74642ab08e36b7937a9b8
+    modified: 1689089382282
+    created: 1689089382282
+    name: DELETE
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689089382282
+    _type: request_group
+  - _id: fld_4787597d0ec74642ab08e36b7937a9b8
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1689085784686
+    created: 1689085782337
+    name: BOOKS
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184558
+    _type: request_group
+  - _id: req_601c7ed21a9f42fbaf2b23e629f8f4f6
+    parentId: fld_dd5104a3366d45cda237c9352303b906
+    modified: 1689090198849
+    created: 1689089632205
+    url: "{{ _.baseURL }}/api/books/2/"
+    name: Editar Livro por ID - Adm
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "A volta dos que não foram 2",
+        	"author": "Um que foi e voltou",
+        	"description": "O enigma de voltar sem ter ido"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1689089291303.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_dd5104a3366d45cda237c9352303b906
+    parentId: fld_4787597d0ec74642ab08e36b7937a9b8
+    modified: 1689089367599
+    created: 1689089367599
+    name: PATCH
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689089367599
+    _type: request_group
+  - _id: req_e20a734719e4495abe43f45d1ea8386d
+    parentId: fld_1c4d08f2f5594cc3b8258bf2fc7164c0
+    modified: 1689090181979
+    created: 1689089441346
+    url: "{{ _.baseURL }}/api/books/"
+    name: Todos Livros - sem token
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1689089441346
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_1c4d08f2f5594cc3b8258bf2fc7164c0
+    parentId: fld_4787597d0ec74642ab08e36b7937a9b8
+    modified: 1689089350539
+    created: 1689089350539
+    name: GET
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1689089350539
+    _type: request_group
+  - _id: req_580de13e73464877aaddf52ddf81af45
+    parentId: fld_1c4d08f2f5594cc3b8258bf2fc7164c0
+    modified: 1689090195444
+    created: 1689089523283
+    url: "{{ _.baseURL }}/api/books/2"
+    name: Livro por ID - Adm
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1689089341317.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cba5f48fa93a40f5bf5b32a3fd0f6719
+    parentId: fld_eb396a5d67704061ae6ff4d1da1f3410
+    modified: 1689091740111
+    created: 1689085809374
+    url: "{{ _.baseURL }}/api/books/register/"
+    name: New Request - Adm
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title": "A volta dos que não foram2",
+        	"author": "Um que foi e voltou",
+        	"description": "O enigma de voltar sem ter ido",
+        	"number_of_copies": 5
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: "{{ _.tokenAdm }}"
+    metaSortKey: -1689085809374
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_eb396a5d67704061ae6ff4d1da1f3410
+    parentId: fld_4787597d0ec74642ab08e36b7937a9b8
+    modified: 1689085804142
+    created: 1689085790577
+    name: POST
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184556.4375
+    _type: request_group
+  - _id: req_cd16a44a7fa64b8ba0b8c1d0ffa090a3
+    parentId: fld_09d5d603ba3a43c4bbbe15ea22df5109
+    modified: 1689089874455
+    created: 1689089858903
+    url: "{{ _.baseURL }}/api/copies/"
+    name: Todas Cópias
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1689089241239
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_09d5d603ba3a43c4bbbe15ea22df5109
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1689089333939
+    created: 1689089239352
+    name: Copies
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184508
+    _type: request_group
+  - _id: req_ceb0fa9911a54beba2b8c1abe42404d4
+    parentId: fld_ebfb00e4541142baab5e7046b766a316
+    modified: 1689090762290
+    created: 1689090294310
+    url: "{{ _.baseURL }}/api/copies/2/"
+    name: Pegar/Devolver Livro
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenNotAdmin }}"
+    metaSortKey: -1689090294310
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ebfb00e4541142baab5e7046b766a316
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1689090266376
+    created: 1689090262091
+    name: Loan
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1688526184458
+    _type: request_group
+  - _id: req_cbdeac5a8d5143afaf79371e5eb271a6
+    parentId: fld_54255bf694b649aeb6506e2d90edfe45
+    modified: 1689090865988
+    created: 1689090794594
+    url: "{{ _.baseURL }}/api/books/2/follow/"
+    name: Follow/Unfollow Livro
+    description: ""
+    method: PUT
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.tokenNotAdmin }}"
+    metaSortKey: -1689090294310
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_54255bf694b649aeb6506e2d90edfe45
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1689090794592
+    created: 1689090794592
+    name: Follow
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1684922890782.5
+    _type: request_group
+  - _id: env_d6e81ff713179dcbff7a6a6bf7e11160d78d3db0
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1688524524240
+    created: 1688524524240
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1688524524240
+    _type: environment
+  - _id: jar_d6e81ff713179dcbff7a6a6bf7e11160d78d3db0
+    parentId: wrk_4098a6a5245144c386faef3b758e8f17
+    modified: 1689092868991
+    created: 1688524524247
+    name: Default Jar
+    cookies:
+      - key: __cf_bm
+        value: A7qUMMJ8Hh56hgWvM4cbrjUS3dy8l7BfthdTPEYTcxQ-1689092868-0-AeAnx1fiLjV2trcx7DMgEo27NMdeyHf0HEcLx2rsgzT8F1yfVdzzFxaImQweGLEWDGN5Z78XE0QmtA01PeWgZ2A=
+        expires: 2023-07-11T16:57:48.000Z
+        domain: onrender.com
+        path: /
+        secure: true
+        httpOnly: true
+        extensions:
+          - SameSite=None
+        hostOnly: false
+        creation: 2023-07-11T16:27:48.991Z
+        lastAccessed: 2023-07-11T16:27:48.991Z
+        id: "019401348737880797"
+    _type: cookie_jar
+  - _id: env_bfb121ee850f4f12b3412089bbc487be
+    parentId: env_d6e81ff713179dcbff7a6a6bf7e11160d78d3db0
+    modified: 1689092824042
+    created: 1688526134645
+    name: Dev
+    data:
+      baseURL: http://127.0.0.1:8000
+      tokenAdm: "{% response 'body', 'req_c78b7d7f68634e22be6a354465c22949',
+        'b64::JC5hY2Nlc3M=::46b', 'never', 60 %}"
+      tokenNotAdmin: "{% response 'body', 'req_4860ff221b2b4050b0885165ca07b804',
+        'b64::JC5hY2Nlc3M=::46b', 'never', 60 %}"
+    dataPropertyOrder:
+      "&":
+        - baseURL
+        - tokenAdm
+        - tokenNotAdmin
+    color: "#ffea00"
+    isPrivate: false
+    metaSortKey: 1688526134646
+    _type: environment
+  - _id: env_3418d04834444374b5e095b33186c8b8
+    parentId: env_d6e81ff713179dcbff7a6a6bf7e11160d78d3db0
+    modified: 1689092856950
+    created: 1688527810099
+    name: Prod
+    data:
+      baseURL: https://api-bookwise.onrender.com
+      tokenAdm: "{% response 'body', 'req_c78b7d7f68634e22be6a354465c22949',
+        'b64::JC5hY2Nlc3M=::46b', 'never', 60 %}"
+      tokenNotAdmin: "{% response 'body', 'req_4860ff221b2b4050b0885165ca07b804',
+        'b64::JC5hY2Nlc3M=::46b', 'never', 60 %}"
+    dataPropertyOrder:
+      "&":
+        - baseURL
+        - tokenAdm
+        - tokenNotAdmin
+    color: "#8c00ff"
+    isPrivate: false
+    metaSortKey: 1688526134696
+    _type: environment
