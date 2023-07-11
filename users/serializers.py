@@ -1,9 +1,14 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+from follows.serializers import FollowSerializer
+from loans.serializers import LoanSerializer
 from .models import User
 
 
 class NormalUserSerializer(serializers.ModelSerializer):
+    followed_books = FollowSerializer(many=True, read_only=True)
+    borrowed_books = LoanSerializer(many=True, read_only=True)
+
     def create(self, validated_data: dict) -> User:
         return User.objects.create_user(**validated_data)
 
@@ -27,8 +32,16 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "name",
             "blocked_until",
             "is_admin",
+            "followed_books",
+            "borrowed_books",
         ]
-        read_only_fields = ["id", "is_admin", "blocked_until"]
+        read_only_fields = [
+            "id",
+            "is_admin",
+            "blocked_until",
+            "followed_books",
+            "borrowed_books",
+        ]
         extra_kwargs = {
             "password": {"write_only": True},
             "username": {

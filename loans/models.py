@@ -6,7 +6,7 @@ class Loan(models.Model):
     loan_return = models.DateField()
     returned = models.DateField(default=None, null=True)
     copie = models.ForeignKey('copies.Copie', on_delete=models.CASCADE)
-    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name="borrowed_books")
 
     def __str__(self) -> str:
         return f"<Loan_id: {self.pk} | book: {self.Copie.book.title} | user: {self.user.username}>"
