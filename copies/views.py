@@ -15,8 +15,8 @@ class CopieListView(generics.ListAPIView):
 
     @extend_schema(
         operation_id="get_copie",
-        description="Rota de listagem de cópias",
-        summary="Listar cópias",
+        description="Rota de listagem de cópias. Aceita parâmetro opcional de paginação ex: .../api/copies/?page=2/. Não requer autenticação.",
+        summary="Listar todas as cópias",
     )
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)

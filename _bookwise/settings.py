@@ -158,7 +158,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "BookWise API",
-    "DESCRIPTION": "API Para gerenciamento de Biblioteca, com cadastro e empréstimo de livros",
+    "DESCRIPTION": "API Para gerenciamento de uma Biblioteca. Permite o cadastro de usuários e funcionários/administradores. Possibilitando o cadastro de livros, gerenciando a quantidade de cópias que cada livro tem, os empréstimos e data de devolução de cada cópia emprestada. Caso o usuário não respeite a data de devolução, o mesmo recebe um bloqueio e não consegue fazer novos empréstimos durante um certo período",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
