@@ -20,26 +20,3 @@ class CopieListView(generics.ListAPIView):
     )
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
-
-
-class CopieView(generics.CreateAPIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    queryset = Copie
-    serializer_class = CopieSerializer
-
-    def create(self, request: Request, *args, **kwargs):
-        serializer = CopieSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        book = get_object_or_404(Book, pk=request.data["book_id"])
-        serializer.save(book=book)
-        return Response(serializer.data, status.HTTP_201_CREATED)
-
-    @extend_schema(
-        operation_id="create_copie",
-        description="Rota de criação de cópias",
-        summary="Criar cópias",
-    )
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
