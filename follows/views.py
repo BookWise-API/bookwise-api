@@ -43,7 +43,7 @@ class FollowView(generics.UpdateAPIView):
             if len(avaliable_copies) > 0:
                 send_mail(
                 subject="Bookwise - Disponibilidade do livro seguido",
-                message=f"Informamos que temos {len(avaliable_copies)} cópias do livro {book_found.title} disponíveis a sua disposição. A equipe Bookwise agradece a preferência!",
+                message=f"Informamos que temos {len(avaliable_copies)} cópias do livro {book_found.title} a sua disposição. A equipe Bookwise agradece a preferência!",
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[request.user.email],
                 fail_silently=False
