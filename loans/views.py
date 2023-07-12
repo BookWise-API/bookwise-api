@@ -7,6 +7,8 @@ from .serializers import LoanSerializer
 from copies.models import Copie
 from datetime import datetime, timedelta
 from drf_spectacular.utils import extend_schema
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class LoanView(generics.UpdateAPIView):
@@ -25,8 +27,6 @@ class LoanView(generics.UpdateAPIView):
         devolution_date = current_date + timedelta(days=7)
         copie_found = self.get_object()
         user = request.user
-
-        
 
         try:
             """
@@ -63,8 +63,17 @@ class LoanView(generics.UpdateAPIView):
             )
             copie_found.is_borrowed = True
             copie_found.save()
+            """
+            Email informativo de empréstimo
+            """
+            send_mail(
+                subject="Bookwise - Empréstimo de livro",
+                message=f"Empréstimo do livro {copie_found.book.title} em sua conta realizado com sucesso! Favor devolver este livro até o dia {devolution_date.strftime('%d/%m/%Y')} para evitar bloqueio da conta. A equipe Bookwise agradece a preferência!",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email],
+                fail_silently=False
+            )
             return Response(serializer.data, status.HTTP_200_OK)
-        
         
         copie_found.is_borrowed = False
         copie_found.save()
@@ -80,6 +89,27 @@ class LoanView(generics.UpdateAPIView):
             block_until = current_date + timedelta(days=5)
             user.blocked_until = block_until
             user.save()
+            """
+            Email informativo de bloqueio de conta
+            """
+            send_mail(
+                subject="Bookwise - Bloqueio de conta",
+                message=f"Informamos que sua conta está bloqueada por motivo de atraso na devolução do livro {copie_found.book.title}. Você poderá voltar a emprestar normalmente a partir do dia {block_until.strftime('%d/%m/%Y')}. Atenciosamente, a equipe Bookwise.",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email],
+                fail_silently=False
+            )
+
+        """
+        Email informativo de devolução
+        """
+        send_mail(
+                subject="Bookwise - Devolução de livro",
+                message=f"Confirmada a devolução do livro {copie_found.book.title} em {current_date.strftime('%d/%m/%Y')}! A equipe Bookwise agradece a preferência!",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email],
+                fail_silently=False
+            )
 
         return Response(serializer.data, status.HTTP_200_OK)
 
